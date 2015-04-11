@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><button onclick="window.location.reload()">Reload</button><pre></pre><canvas id="canvas"></canvas><script type="application/x-glsl" id="vertex-shader">uniform mat4 projection, frustum, modelview;
+//uniform mat3 normalMatrix;
+
+attribute vec3 vertex;
+//attribute vec3 normal;
+
+//varying vec3 normalV;
+
+void main() {
+  gl_Position = projection * frustum * modelview * vec4(vertex, 1.);
+  //normalV = normalMatrix * normal;
+}
+</script><script type="application/x-glsl" id="fragment-shader">precision highp float;
+
+const vec3 lightPos = vec3(10., 10., 10.);
+
+//varying vec3 normalV;
+
+void main() {
+
+  gl_FragColor = vec4(1., 1., 1., 1.);
+}
+</script><script src="build.js"></script></body></html>
