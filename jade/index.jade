@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(name='viewport',content="width=device-width, initial-scale=1, user-scalable=no")
+    link(rel='manifest',href='manifest.json')
+    link(rel='stylesheet',href='style.css')
+  body
+    button(onclick='window.location.reload()') Reload
+    pre
+    canvas#canvas
+    script(type='application/x-glsl',id='vertex-shader')
+      include ../js/vertex.glsl
+    script(type='application/x-glsl',id='fragment-shader')
+      include ../js/fragment.glsl
+    script(src='build.js')

@@ -1,0 +1,30 @@
+{
+  "name": "",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html' 'npm run serve'",
+    "watch:js": "watchify -dv -t uglifyify -t brfs js/main.js -o build/build.js",
+    "watch:css": "stylus -w -c css/style.styl -o build",
+    "watch:html": "jade -w --out build jade/index.jade",
+    "build:js": "browserify -t brfs -t [ uglifyify -mc ] js/main.js | uglifyjs -mc > build/build.js",
+    "build": "jade --out build jade/index.jade && stylus -c css/style.styl -o build && npm run build:js",
+    "serve": "http-server -c-1 -p8888 build"
+  },
+  "devDependencies": {
+    "brfs": "^1.4.0",
+    "browserify": "^9.0.4",
+    "http-server": "^0.8.0",
+    "jade": "^1.9.2",
+    "parallelshell": "^1.1.1",
+    "stylus": "^0.50.0",
+    "uglifyify": "^3.0.1",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.1.0"
+  },
+  "author": "Andrea Venuta",
+  "license": "MIT",
+  "dependencies": {
+    "gl-matrix": "^2.1.0"
+  }
+}
