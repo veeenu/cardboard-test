@@ -1,4 +1,4 @@
-uniform mat4 projection, frustum, modelview;
+uniform mat4 projection, view, model;
 //uniform mat3 normalMatrix;
 
 attribute vec3 vertex;
@@ -7,6 +7,6 @@ attribute vec3 vertex;
 //varying vec3 normalV;
 
 void main() {
-  gl_Position = projection * frustum * modelview * vec4(vertex, 1.);
+  gl_Position = projection * view * model * vec4(vertex, 1.);
   //normalV = normalMatrix * normal;
 }
