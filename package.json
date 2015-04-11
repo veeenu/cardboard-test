@@ -9,7 +9,8 @@
     "watch:html": "jade -w --out build jade/index.jade",
     "build:js": "browserify -t brfs -t [ uglifyify -mc ] js/main.js | uglifyjs -mc > build/build.js",
     "build": "jade --out build jade/index.jade && stylus -c css/style.styl -o build && npm run build:js",
-    "serve": "http-server -c-1 -p8888 build"
+    "serve": "http-server -c-1 -p8888 build",
+    "deploy": "git subtree split --prefix build -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages"
   },
   "devDependencies": {
     "brfs": "^1.4.0",
